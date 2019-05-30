@@ -3,10 +3,11 @@ import Component from './Component.js';
 class PokemonItem extends Component {
 
     renderTemplate() {
+        const pokemon = this.props.pokemon;
         return /*html*/`
             <li class="pokemon-item">
-                <h2>Pichu</h2>
-                <img src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/172.png">
+                <h2>${pokemon.pokemon}</h2>
+                <img src="${pokemon.url_image}">
             </li>
         `;
     }
