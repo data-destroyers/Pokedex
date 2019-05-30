@@ -1,6 +1,6 @@
-const URL = 'https://alchemy-pokedex.herokuapp.com/';
+const URL = 'https://cors-anywhere.herokuapp.com/https://alchemy-pokedex.herokuapp.com/api/pokedex';
 
-const api = {
+const pokedexApi = {
     getPokemon(search) {
         let url = URL;
 
@@ -17,4 +17,4 @@ const api = {
     }
 };
 
-export default api;
+export default pokedexApi;
