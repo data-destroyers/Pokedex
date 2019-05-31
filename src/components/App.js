@@ -15,16 +15,18 @@ class App extends Component {
         const header = new Header();
         dom.insertBefore(header.render(), main);
 
-        const loading = new Loading({ loading: true });
-        main.appendChild(loading.render());
-
         const paging = new Paging({ totalCount: 0 });
         main.appendChild(paging.render());
 
+        const loading = new Loading({ loading: false });
+        main.appendChild(loading.render());
+        
         const pokemonList = new PokemonList({ pokemon: [] });
         main.appendChild(pokemonList.render());
 
         function loadPokemon() {
+            loading.update({ loading: true });
+            
             const queryProps = hashStorage.get();
             pokedexApi.getPokemon(queryProps)
                 .then(response => {
