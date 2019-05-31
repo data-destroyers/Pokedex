@@ -14,3 +14,7 @@ body {
 main {
     margin: auto;
 }
+
+#loading {
+    text-align: center;
+}
