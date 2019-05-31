@@ -1,5 +1,5 @@
 import QUERY from '../QUERY.js';
-const URL = 'https://cors-anywhere.herokuapp.com/https://alchemy-pokedex.herokuapp.com/api/pokedex';
+const URL = 'https://alchemy-pokedex.herokuapp.com/api/pokedex';
 
 const pokedexApi = {
     getPokemon(queryProps) {
