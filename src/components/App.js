@@ -4,6 +4,7 @@ import PokemonList from './PokemonList.js';
 import Loading from './Loading.js';
 import pokedexApi from '../services/pokedex-api.js';
 import Paging from './Paging.js';
+import hashStorage from '../hash-storage.js';
 
 class App extends Component {
 
@@ -17,17 +18,31 @@ class App extends Component {
         const loading = new Loading({ loading: true });
         main.appendChild(loading.render());
 
+        const paging = new Paging({ totalCount: 0 });
+        main.appendChild(paging.render());
+
         const pokemonList = new PokemonList({ pokemon: [] });
         main.appendChild(pokemonList.render());
 
-        pokedexApi.getPokemon()
-            .then(response => {
-                const pokemon = response.results;
-                pokemonList.update({ pokemon });
-            })
-            .finally(() => {
-                loading.update({ loading: false });
-            });
+        function loadPokemon() {
+            const queryProps = hashStorage.get();
+            pokedexApi.getPokemon(queryProps)
+                .then(response => {
+                    const pokemon = response.results;
+                    pokemonList.update({ pokemon });
+                    paging.update({ totalCount: response.count });
+                })
+                .finally(() => {
+                    loading.update({ loading: false });
+                });
+    
+        }
+
+        loadPokemon();
+        
+        window.addEventListener('hashchange', () => {
+            loadPokemon();
+        });
 
         return dom;
     }
