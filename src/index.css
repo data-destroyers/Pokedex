@@ -1,5 +1,16 @@
+@font-face {
+    font-family: "pokemon-solid";
+    src: url("../assets/fonts/pokemon-solid.ttf"); 
+   }
+
 body {
-    display: flex;
-    justify-content: center;
     background-color: rgba(127, 213, 241, 0.637);
+    /* display: flex;
+    justify-content: center;
+    flex-direction: column; */
+    align-items: center;
+}
+
+main {
+    margin: auto;
 }
