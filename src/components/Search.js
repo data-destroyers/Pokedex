@@ -5,12 +5,16 @@ class Search extends Component {
     render() {
         const dom = this.renderDOM();
         const input = dom.querySelector('input');
+        const inputForm = dom.querySelector('#input-form');
 
-        dom.addEventListener('submit', event => {
+        inputForm.addEventListener('submit', event => {
+            const formData = new FormData(inputForm);
             event.preventDefault();
             const search = input.value;
-            hashStorage.set({ 'pokemon': search, page: 1 });
+            const property = formData.get('property');
+            hashStorage.set({ [property]: search, page: 1 });
         });
+
 
         function setInputFromHash() {
             const queryProps = hashStorage.get();
@@ -31,10 +35,18 @@ class Search extends Component {
     }
     renderTemplate() {
         return /*html*/`
-            <form id="input-button">
+        <div>
+            
+        
+            <form id="input-form">
+                <select name="property">
+                    <option value="pokemon">Name</option>
+                    <option value="type_1">Type</option>
+                </select>
                 <input>
                 <button>Submit</button>
             </form>
+        </div>    
         `;
     }
 }
