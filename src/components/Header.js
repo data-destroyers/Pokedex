@@ -18,7 +18,7 @@ class Header extends Component {
     renderTemplate() {
         return /*html*/`
             <header>
-                <a href="index.html"><h1>Pokemon</h1></a>
+                <a href="index.html"><h1>Jon's Pokemon Index</h1></a>
             </header>
         `;
     }
