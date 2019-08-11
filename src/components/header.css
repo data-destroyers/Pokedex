@@ -1,0 +1,17 @@
+h1 {
+    font-family: "pokemon-solid";
+    text-align: center;
+    font-size: 5em;
+    color: yellow;
+    -webkit-text-stroke: 3px darkblue;
+    -webkit-text-stroke-width: 4px;
+    margin: 10px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
